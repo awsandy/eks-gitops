@@ -219,17 +219,6 @@ resource "kubectl_manifest" "karpenter_provisioner" {
         - key: karpenter.sh/capacity-type
           operator: In
           values: ["spot"]
-      blockDeviceMappings:
-        - deviceName: /dev/xvda
-          ebs:
-            volumeType: gp3
-            volumeSize: 16Gi
-            deleteOnTermination: true
-        - deviceName: /dev/xvdb
-          ebs:
-            volumeType: gp2
-            volumeSize: 16Gi
-            deleteOnTermination: true
       limits:
         resources:
           cpu: 1000
@@ -256,6 +245,12 @@ resource "kubectl_manifest" "karpenter_node_template" {
         karpenter.sh/discovery: ${module.eks.cluster_name}
       tags:
         karpenter.sh/discovery: ${module.eks.cluster_name}
+      blockDeviceMappings:
+        - deviceName: /dev/xvdb
+          ebs:
+            volumeType: gp2
+            volumeSize: 16Gi
+            deleteOnTermination: true
   YAML
 
   depends_on = [
