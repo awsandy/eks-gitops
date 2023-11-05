@@ -105,9 +105,9 @@ destroy:
 	set -ex
 	cd 05-keycloak-grafana/ && \
 	terraform destroy --auto-approve && \
-	cd 04-gitops/ && \
+	cd ../04-gitops/ && \
 	terraform destroy --auto-approve && \
-	cd 03-Addons/ && \
+	cd ../03-Addons/ && \
 	terraform destroy --auto-approve && \
-	cd 02-Cluster/ && \
+	cd ../02-Cluster/ && \
 	terraform destroy --auto-approve
