@@ -96,8 +96,12 @@ deploy-keycloak:
 destroy:
 	@echo "$(RED) INFO: Removing all Terraform created resources"
 	set -ex
-	cd terraform/ && \
-	kubectl delete -f manifest/keycloak.yml && \
-	terraform init -reconfigure && \
-	terraform validate && \
-	terraform destroy --auto-approve -var-file=terraform.tfvars
+	cd 05-keycloak-grafana/ && \
+	kubectl delete ns keycloak && \
+	terraform destroy --auto-approve && \
+	cd 04-gitops/ && \
+	terraform destroy --auto-approve && \
+	cd 03-Addons/ && \
+	terraform destroy --auto-approve && \
+	cd 02-Cluster/ && \
+	terraform destroy --auto-approve
