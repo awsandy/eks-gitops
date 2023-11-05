@@ -60,6 +60,13 @@ cluster:
 	terraform init && \
 	./build.sh
 
+fixed:
+	@echo "$(GRE) INFO: Add on resources"
+	cd 01-fixed-resources/ && \
+	terraform init -reconfigure && \
+	terraform validate && \
+	terraform apply --auto-approve
+
 addons:
 	@echo "$(GRE) INFO: Add on resources"
 	cd 03-Addons/ && \
