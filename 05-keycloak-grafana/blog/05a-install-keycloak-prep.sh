@@ -5,8 +5,6 @@ export WORKSPACE_ENDPOINT=$(aws grafana list-workspaces --query 'workspaces[0].e
 echo $WORKSPACE_ENDPOINT
 echo $KEYCLOAK_PASSWORD
 cat << EOF > keycloak_values.yaml
-global:
-  storageClass: gp3
 auth:
   adminUser: admin
   adminPassword: $KEYCLOAK_PASSWORD
