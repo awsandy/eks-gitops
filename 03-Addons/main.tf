@@ -62,16 +62,6 @@ module "eks_blueprints_addons" {
   cluster_version   = data.aws_ssm_parameter.cluster1_version.value
   oidc_provider_arn = data.aws_ssm_parameter.cluster1_oidc_provider_arn.value
 
-
-  eks_addons = {
-    aws-ebs-csi-driver = {
-      most_recent = true
-      create_irsa = true
-      namespace     = "ebs-csi"
-      create_namespace = true
-    }
-  }
-
   enable_aws_load_balancer_controller     = true
   enable_aws_for_fluentbit                = true # get logs out to CW
   enable_fargate_fluentbit                = true # get logs for fargate pods
