@@ -54,31 +54,21 @@ clean:
 	@echo "$(RED) INFO: Removing local Terraform generated files"
 	@rm -rf .terraform* terraform.tfs*
 
-plan:
-	@echo "$(GRE) INFO: Initialize the working directory and planning"
-	cd terraform/ && \
-	terraform init -reconfigure && \
-	terraform fmt && \
-	terraform validate && \
-	terraform plan
-
 cluster:
 	@echo "$(GRE) INFO: Building Cluster resources"
 	cd 02-Cluster/ && \
 	./build.sh
 
-
-
 addons:
 	@echo "$(GRE) INFO: Add on resources"
-	cd 03-Addons/ \
+	cd 03-Addons/ && \
 	terraform init -reconfigure && \
 	terraform validate && \
 	terraform apply --auto-approve
 
 gitops:
 	@echo "$(GRE) INFO: Add on resources"
-	cd 04-gitops/ \
+	cd 04-gitops/ && \
 	terraform init -reconfigure && \
 	terraform validate && \
 	terraform apply --auto-approve 
