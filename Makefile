@@ -38,7 +38,7 @@ USER_HOME_DIRECTORY := $(HOME)
 TERRAFORM_VERSION := $(shell terraform --version 2> /dev/null)
 REGION := $(shell aws configure get region)
 
-all: cluster addons gitops git-private configure-auth upload configure-external-dns configure-keycloak destroy clean
+all: cluster addons gitops grafana
 	@echo "$(GRE) INFO: Applying all options"
 
 .PHONY: apply clean destroy configure-auth plan upload
@@ -75,11 +75,18 @@ addons:
 	terraform apply --auto-approve
 
 gitops:
-	@echo "$(GRE) INFO: Add on resources"
+	@echo "$(GRE) INFO: gitops resources"
 	cd 04-gitops/ && \
 	terraform init -reconfigure && \
 	terraform validate && \
 	terraform apply --auto-approve 
+
+grafana:
+	@echo "$(GRE) INFO: Add on resources"
+	cd 05-keycloak-grafana/ && \
+	terraform init -reconfigure && \
+	terraform validate && \
+	terraform apply --auto-approve
 
 
 update-kube-config:
