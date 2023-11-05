@@ -104,7 +104,6 @@ destroy:
 	@echo "$(RED) INFO: Removing all Terraform created resources"
 	set -ex
 	cd 05-keycloak-grafana/ && \
-	kubectl delete ns keycloak && \
 	terraform destroy --auto-approve && \
 	cd 04-gitops/ && \
 	terraform destroy --auto-approve && \
