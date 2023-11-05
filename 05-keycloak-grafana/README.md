@@ -29,3 +29,13 @@ kubectl -n keycloak get pvc
 kubectl -n keycloak describe pvc (postgres looking for gp2)
 
 
+
+kubectl get storageclasses.storage.k8s.io 
+gp2 (default)   kubernetes.io/aws-ebs   Delete          WaitForFirstConsumer   false
+
+
+
+
+nn=$(kubectl get node -l karpenter.sh/provisioner-name |  awk '{print $1}' | tail -1)
+ii=$(kubectl get node $nn -o json | jq -r ".spec.providerID" | cut -d \/ -f5)
+echo $ii
