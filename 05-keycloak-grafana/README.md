@@ -39,3 +39,7 @@ gp2 (default)   kubernetes.io/aws-ebs   Delete          WaitForFirstConsumer   f
 nn=$(kubectl get node -l karpenter.sh/provisioner-name |  awk '{print $1}' | tail -1)
 ii=$(kubectl get node $nn -o json | jq -r ".spec.providerID" | cut -d \/ -f5)
 echo $ii
+
+
+https://spacelift.io/blog/bootstrap-complete-amazon-eks-clusters-with-eks-blueprints-for-terraform
+
