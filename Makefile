@@ -64,8 +64,9 @@ plan:
 
 cluster:
 	@echo "$(GRE) INFO: Building Cluster resources"
-	cd 02-Cluster/ \
+	cd 02-Cluster/ && \
 	./build.sh
+
 
 
 addons:
