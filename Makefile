@@ -38,7 +38,7 @@ USER_HOME_DIRECTORY := $(HOME)
 TERRAFORM_VERSION := $(shell terraform --version 2> /dev/null)
 REGION := $(shell aws configure get region)
 
-all: cluster plan apply git-private configure-auth upload configure-external-dns configure-keycloak destroy clean
+all: cluster addons gitops git-private configure-auth upload configure-external-dns configure-keycloak destroy clean
 	@echo "$(GRE) INFO: Applying all options"
 
 .PHONY: apply clean destroy configure-auth plan upload
@@ -63,11 +63,25 @@ plan:
 	terraform plan
 
 cluster:
-	@echo "$(GRE) INFO: Applying planned resources"
+	@echo "$(GRE) INFO: Building Cluster resources"
 	cd 02-Cluster/ \
-	@terraform init -reconfigure && \
+	./build.sh
+
+
+addons:
+	@echo "$(GRE) INFO: Add on resources"
+	cd 03-Addons/ \
+	terraform init -reconfigure && \
 	terraform validate && \
-	terraform apply --auto-approve -var-file=terraform.tfvars
+	terraform apply --auto-approve
+
+gitops:
+	@echo "$(GRE) INFO: Add on resources"
+	cd 04-gitops/ \
+	terraform init -reconfigure && \
+	terraform validate && \
+	terraform apply --auto-approve 
+
 
 update-kube-config:
 	@echo "$(GRE) INFO: Configuring Kube config."
