@@ -1,0 +1,18 @@
+provider "flux" {
+  kubernetes = {
+    config_path = "~/.kube/config"
+  }
+  git = {
+    url = "ssh://${aws_iam_user_ssh_key.gitops.id}@git-codecommit.${var.region}.amazonaws.com/v1/repos/${data.aws_ssm_parameter.cluster1_name.value}-gitops"
+    ssh = {
+      username = aws_iam_user_ssh_key.gitops.id
+      private_key = tls_private_key.gitops.private_key_openssh
+      branch = "main"
+    }
+  }
+}
+
+resource "flux_bootstrap_git" "this" {
+  depends_on=[local_file.ssh_private_key,aws_codecommit_repository.gitops]
+  path = "clusters/${data.aws_ssm_parameter.cluster1_name.value}"
+}
