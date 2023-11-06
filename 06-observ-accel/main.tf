@@ -80,7 +80,7 @@ module "eks_monitoring" {
 
   # control the publishing of dashboards by specifying the boolean value for the variable 'enable_dashboards', default is 'true'
   #enable_dashboards = var.enable_dashboards
-  dashboards_folder_id            = module.aws_observability_accelerator.grafana_dashboards_folder_id
+  #dashboards_folder_id            = module.aws_observability_accelerator.grafana_dashboards_folder_id
   managed_prometheus_workspace_id = module.aws_observability_accelerator.managed_prometheus_workspace_id
 
   managed_prometheus_workspace_endpoint = module.aws_observability_accelerator.managed_prometheus_workspace_endpoint
