@@ -88,6 +88,14 @@ grafana:
 	terraform validate && \
 	terraform apply --auto-approve
 
+fixed:
+	@echo "$(GRE) INFO: Fixed resources"
+	cd 01b-fixed-resources/ && \
+	terraform init -reconfigure && \
+	terraform validate && \
+	terraform apply --auto-approve
+
+
 
 update-kube-config:
 	@echo "$(GRE) INFO: Configuring Kube config."
