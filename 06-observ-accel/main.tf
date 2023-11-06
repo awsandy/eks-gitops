@@ -61,11 +61,11 @@ module "eks_monitoring" {
 
   eks_cluster_id = data.aws_ssm_parameter.cluster1_name.value
 
-  dashboards_folder_id            = module.eks_observability_accelerator.grafana_dashboards_folder_id
-  managed_prometheus_workspace_id = module.eks_observability_accelerator.managed_prometheus_workspace_id
+  dashboards_folder_id            = module.aws_observability_accelerator.grafana_dashboards_folder_id
+  managed_prometheus_workspace_id = module.aws_observability_accelerator.managed_prometheus_workspace_id
 
-  managed_prometheus_workspace_endpoint = module.eks_observability_accelerator.managed_prometheus_workspace_endpoint
-  managed_prometheus_workspace_region   = module.eks_observability_accelerator.managed_prometheus_workspace_region
+  managed_prometheus_workspace_endpoint = module.aws_observability_accelerator.managed_prometheus_workspace_endpoint
+  managed_prometheus_workspace_region   = module.aws_observability_accelerator.managed_prometheus_workspace_region
 
   #enable_logs = true
   enable_tracing = true
