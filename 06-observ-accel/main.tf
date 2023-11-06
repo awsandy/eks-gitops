@@ -48,7 +48,7 @@ module "aws_observability_accelerator" {
   source = "github.com/aws-observability/terraform-aws-observability-accelerator?ref=v2.10.0"
 
   aws_region     = data.aws_region.current.name
-  eks_cluster_id = data.aws_ssm_parameter.cluster1_name.value
+  #eks_cluster_id = data.aws_ssm_parameter.cluster1_name.value
 
   # As Grafana shares a different lifecycle, we recommend using an existing workspace.
   managed_grafana_workspace_id = data.aws_ssm_parameter.grafana-id.value
