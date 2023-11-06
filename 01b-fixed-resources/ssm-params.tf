@@ -19,3 +19,14 @@ resource "aws_ssm_parameter" "grafana-id" {
     workshop = "EKS Workshop"
   }
 }
+
+resource "aws_ssm_parameter" "grafana-key" {
+  name        = "/workshop/grafana-key"
+  description = "The Grafana key"
+  type        = "String"
+  value       = aws_grafana_workspace_api_key.key.key
+
+  tags = {
+    workshop = "EKS Workshop"
+  }
+}
