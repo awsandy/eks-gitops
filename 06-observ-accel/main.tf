@@ -93,6 +93,7 @@ module "eks_monitoring" {
   }
 
   enable_logs = true
+  enable_tracing=true
 
   tags = local.tags
 
@@ -105,22 +106,6 @@ module "eks_monitoring" {
 
 
 
-
-
-module "eks_monitoring" {
-  source = "github.com/aws-observability/terraform-aws-observability-accelerator//modules/eks-monitoring?ref=v2.1.0"
-
-  eks_cluster_id = data.aws_ssm_parameter.cluster1_name.value
-
-  dashboards_folder_id            = module.aws_observability_accelerator.grafana_dashboards_folder_id
-  managed_prometheus_workspace_id = module.aws_observability_accelerator.managed_prometheus_workspace_id
-
-  managed_prometheus_workspace_endpoint = module.aws_observability_accelerator.managed_prometheus_workspace_endpoint
-  managed_prometheus_workspace_region   = module.aws_observability_accelerator.managed_prometheus_workspace_region
-
-  #enable_logs = true
-  enable_tracing = true
-}
 
 
 # Deploy the ADOT Container Insights
