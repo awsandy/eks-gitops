@@ -95,7 +95,12 @@ fixed:
 	terraform validate && \
 	terraform apply --auto-approve
 
-
+observ:
+	@echo "$(GRE) INFO: Fixed resources"
+	cd 06-observ-accel/ && \
+	terraform init -reconfigure && \
+	terraform validate && \
+	terraform apply --auto-approve
 
 update-kube-config:
 	@echo "$(GRE) INFO: Configuring Kube config."
@@ -111,6 +116,8 @@ deploy-keycloak:
 destroy:
 	@echo "$(RED) INFO: Removing all Terraform created resources"
 	set -ex
+	cd 06-observ-accel/ && \
+	terraform destroy --auto-approve && \	
 	kubectl delete ns keycloak || true
 	cd 05-keycloak-grafana/ && \
 	terraform destroy --auto-approve && \
