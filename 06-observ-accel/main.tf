@@ -94,7 +94,7 @@ module "eks_monitoring" {
 
   enable_logs = true
 
-  tags = local.tags
+  #tags = local.tags
 
   depends_on = [
     module.aws_observability_accelerator
