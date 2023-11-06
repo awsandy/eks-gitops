@@ -63,7 +63,7 @@ module "eks_blueprints_addons" {
   oidc_provider_arn = data.aws_ssm_parameter.cluster1_oidc_provider_arn.value
 
   enable_aws_load_balancer_controller     = true
-  enable_aws_for_fluentbit                = true # get logs out to CW
+ 
   enable_fargate_fluentbit                = true # get logs for fargate pods
   #enable_cluster_proportional_autoscaler = true
   #enable_karpenter                       = true
@@ -111,16 +111,16 @@ module "eks_blueprints_addons" {
     skip_destroy      = false
   }
 
-
-  aws_for_fluentbit = {
-    namespace=kubernetes_namespace_v1.fluentbit-nodes.id
-    enable_containerinsights = true
-    set = [{
-        name  = "cloudWatchLogs.autoCreateGroup"
-        value = true
-      }
-    ]
-  }
+  #enable_aws_for_fluentbit                = true # get logs out to CW   - do in observability accelerator
+  #aws_for_fluentbit = {
+  #  namespace=kubernetes_namespace_v1.fluentbit-nodes.id
+  #  enable_containerinsights = true
+  #  set = [{
+  #      name  = "cloudWatchLogs.autoCreateGroup"
+  #      value = true
+  #    }
+  #  ]
+  #}
 
   aws_for_fluentbit_cw_log_group = {  # creates log group "/aws/eks/c1-lattice/aws-fluentbit-logs"
     create          = true
