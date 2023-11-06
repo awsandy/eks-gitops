@@ -103,6 +103,7 @@ deploy-keycloak:
 destroy:
 	@echo "$(RED) INFO: Removing all Terraform created resources"
 	set -ex
+	kubectl delete ns keycloak || true
 	cd 05-keycloak-grafana/ && \
 	terraform destroy --auto-approve && \
 	cd ../04-gitops/ && \
