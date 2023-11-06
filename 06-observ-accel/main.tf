@@ -52,7 +52,58 @@ module "aws_observability_accelerator" {
 
   # As Grafana shares a different lifecycle, we recommend using an existing workspace.
   managed_grafana_workspace_id = data.aws_ssm_parameter.grafana-id.value
+  enable_dashboard=true
 }
+
+
+module "eks_monitoring" {
+
+  source = "github.com/aws-observability/terraform-aws-observability-accelerator//modules/eks-monitoring?ref=v2.1.0"
+
+  eks_cluster_id = data.aws_ssm_parameter.cluster1_name.value
+
+  # deploys AWS Distro for OpenTelemetry operator into the cluster
+  enable_amazon_eks_adot = true
+
+  # reusing existing certificate manager? defaults to true
+  enable_cert_manager = true
+
+  # enable EKS API server monitoring
+  enable_apiserver_monitoring = true
+
+  # deploys external-secrets in to the cluster
+  enable_external_secrets = true
+  grafana_api_key         = aws_grafana_workspace_api_key.key.key
+  target_secret_name      = "grafana-admin-credentials"
+  target_secret_namespace = "grafana-operator"
+  grafana_url             = module.aws_observability_accelerator.managed_grafana_workspace_endpoint
+
+  # control the publishing of dashboards by specifying the boolean value for the variable 'enable_dashboards', default is 'true'
+  #enable_dashboards = var.enable_dashboards
+
+  managed_prometheus_workspace_id = module.aws_observability_accelerator.managed_prometheus_workspace_id
+
+  managed_prometheus_workspace_endpoint = module.aws_observability_accelerator.managed_prometheus_workspace_endpoint
+  managed_prometheus_workspace_region   = module.aws_observability_accelerator.managed_prometheus_workspace_region
+
+  # optional, defaults to 60s interval and 15s timeout
+  prometheus_config = {
+    global_scrape_interval = "60s"
+    global_scrape_timeout  = "15s"
+  }
+
+  enable_logs = true
+
+  tags = local.tags
+
+  depends_on = [
+    module.aws_observability_accelerator
+  ]
+}
+
+
+
+
 
 
 
