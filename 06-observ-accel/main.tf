@@ -52,7 +52,7 @@ module "aws_observability_accelerator" {
 
   # As Grafana shares a different lifecycle, we recommend using an existing workspace.
   managed_grafana_workspace_id = data.aws_ssm_parameter.grafana-id.value
-  enable_dashboard=true
+  #enable_dashboard=true
 }
 
 
