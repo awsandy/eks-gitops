@@ -38,7 +38,7 @@ USER_HOME_DIRECTORY := $(HOME)
 TERRAFORM_VERSION := $(shell terraform --version 2> /dev/null)
 REGION := $(shell aws configure get region)
 
-all: cluster addons gitops grafana
+all: fixed cluster addons gitops grafana
 	@echo "$(GRE) INFO: Applying all options"
 
 .PHONY: apply clean destroy configure-auth plan upload
@@ -119,4 +119,7 @@ destroy:
 	cd ../03-Addons/ && \
 	terraform destroy --auto-approve && \
 	cd ../02-Cluster/ && \
+	terraform destroy --auto-approve && \
+	cd ../01b-fixed-resources/ && \
 	terraform destroy --auto-approve
+
