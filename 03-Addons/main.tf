@@ -71,7 +71,7 @@ module "eks_blueprints_addons" {
   enable_metrics_server                   = true
   enable_aws_cloudwatch_metrics           = true # container insights
 
-  enable_cert_manager                     = true
+  enable_cert_manager                     = true   #turned off in observability accel)
 
   #cert_manager_route53_hosted_zone_arns  = ["arn:aws:route53:::hostedzone/XXXXXXXXXXXXX"]
 
@@ -111,7 +111,7 @@ module "eks_blueprints_addons" {
     skip_destroy      = false
   }
 
-  #enable_aws_for_fluentbit                = true # get logs out to CW   - do in observability accelerator
+  #enable_aws_for_fluentbit                = true # get logs out to CW   - done in observability accelerator
   #aws_for_fluentbit = {
   #  namespace=kubernetes_namespace_v1.fluentbit-nodes.id
   #  enable_containerinsights = true
@@ -140,7 +140,9 @@ module "eks_blueprints_addons" {
   }
 
   aws_load_balancer_controller = {
-    namespace=kubernetes_namespace_v1.aws_load_balancer_controller.id
+    #namespace=kubernetes_namespace_v1.aws_load_balancer_controller.id
+    namespace="aws-lb-controller"
+    create_namespace = true
     set = [
       {
         name  = "vpcId"

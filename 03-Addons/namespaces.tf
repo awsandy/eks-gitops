@@ -1,16 +1,3 @@
-resource "kubernetes_namespace_v1" "aws_load_balancer_controller" {
-  metadata {
-    annotations = {
-      name = "aws-lb-controller"
-    }
-
-    labels = {
-      mylabel = "aws-lb-controller"
-    }
-
-    name = "aws-lb-controller"
-  }
-}
 
 
 resource "kubernetes_namespace_v1" "metrics" {
