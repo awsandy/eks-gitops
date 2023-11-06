@@ -25,7 +25,7 @@ keycloakConfigCli:
         "users": [
           {
             "username": "admin",
-            "email": "admin@keycloak",
+            "email": "awsandy@amazon.com",
             "enabled": true,
             "firstName": "Admin",
             "realmRoles": [
