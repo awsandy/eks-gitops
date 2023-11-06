@@ -120,7 +120,7 @@ module "eks_monitoring" {
 
   #enable_logs = true
  # enable_tracing = true
-}
+#}
 
 
 # Deploy the ADOT Container Insights
