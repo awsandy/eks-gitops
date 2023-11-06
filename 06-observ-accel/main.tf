@@ -73,7 +73,8 @@ module "eks_monitoring" {
 
   # deploys external-secrets in to the cluster
   enable_external_secrets = true
-  grafana_api_key         = aws_grafana_workspace_api_key.key.key
+  # grafana_api_key         = aws_grafana_workspace_api_key.key.key
+  grafana_api_key         = data.aws_ssm_parameter.grafana_api_key.value
   target_secret_name      = "grafana-admin-credentials"
   target_secret_namespace = "grafana-operator"
   grafana_url             = module.aws_observability_accelerator.managed_grafana_workspace_endpoint
