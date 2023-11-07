@@ -19,7 +19,7 @@ resource "local_file" "json_config" {
                                   "Value": ${aws_route53_zone.keycloak.name_servers[0]}},
                                   "Value": ${aws_route53_zone.keycloak.name_servers[1]}},
                                   "Value": ${aws_route53_zone.keycloak.name_servers[2]}},
-                                  "Value": ${aws_route53_zone.keycloak.name_servers[4]}}
+                                  "Value": ${aws_route53_zone.keycloak.name_servers[3]}}
                                   ]
 }}]
 }
