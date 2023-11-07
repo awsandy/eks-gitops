@@ -92,6 +92,7 @@ module "eks_blueprints_addons" {
   }
 
   cert_manager = {
+    depends_on = [module.eks_blueprints_addons.aws_load_balancer_controller]
     namespace="cert-manager"
     create_namespace = true
   }

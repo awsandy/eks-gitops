@@ -3,7 +3,6 @@ resource "aws_route53_zone" "keycloak" {
 }
 
 
-
 resource "local_file" "json_config" {
   content         = <<EOF
 {
