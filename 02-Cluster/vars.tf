@@ -9,7 +9,7 @@ variable "profile" {
 
 variable "CLUSTER1_NAME" {
   type    = string
-  default = "eks-workshop"
+  default = "tf-workshop"
 }
 
 variable "CLUSTER2_NAME" {
