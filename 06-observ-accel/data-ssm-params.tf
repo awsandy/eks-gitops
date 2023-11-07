@@ -8,7 +8,7 @@ data "aws_ssm_parameter" "grafana-id" {
 }
 
 data "aws_ssm_parameter" "grafana_api_key" {
-    name        = "/workshop/grafana_key"
+    name        = "/workshop/grafana-key"
 
 }
 
