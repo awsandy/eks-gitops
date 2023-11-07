@@ -3,7 +3,7 @@ resource "aws_grafana_workspace" "workshop" {
   authentication_providers = ["SAML"]
   permission_type          = "SERVICE_MANAGED"
   role_arn                 = aws_iam_role.grafana.arn
-  name = "tf-workshop"
+  name = "keycloak-blog"     # must match  keycloak stuff
 }
 
 resource "aws_iam_role" "grafana" {

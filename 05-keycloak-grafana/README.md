@@ -72,3 +72,14 @@ To access Keycloak from outside the cluster execute the following commands:
 
    kubectl get ingress -n keycloak   
    echo $(kubectl get secret --namespace keycloak keycloak -o jsonpath="{.data.admin-password}" | base64 -d)
+
+
+----------------------
+
+Sign in problems
+
+goto keycloak dashboard:
+switch to "keycloak-blog" - top left
+Sessions  - dlete as necessary 
+login again
+
