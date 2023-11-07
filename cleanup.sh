@@ -1,3 +1,4 @@
+tstart=$(date +%s)
 cd 06-observ-accel
 terraform destroy --auto-approve 
 kubectl delete ns keycloak || true 
@@ -11,3 +12,6 @@ cd ../02-Cluster
 terraform destroy --auto-approve
 cd ../01b-fixed-resources
 terraform destroy --auto-approve
+tend=$(date +%s)
+runtime=$((tend - tstart))
+echo "$com runtime $runtime seconds"
