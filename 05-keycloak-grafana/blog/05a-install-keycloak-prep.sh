@@ -1,6 +1,6 @@
 export ACCOUNT_ID=$(aws sts get-caller-identity --query Account --output text)
 export HOSTED_ZONE=$ACCOUNT_ID.awsandy.people.aws.dev
-export KEYCLOAK_PASSWORD=$(openssl rand -base64 16)
+export KEYCLOAK_PASSWORD="keycloakpass123"
 export WORKSPACE_ENDPOINT=$(aws grafana list-workspaces --query 'workspaces[0].endpoint' --output text)
 echo $WORKSPACE_ENDPOINT
 echo $KEYCLOAK_PASSWORD
