@@ -37,7 +37,6 @@ aws rds delete-db-instance --db-instance-identifier $dbi --skip-final-snapshot
 
 
 
-
 Don't provison cluster with eksctl - but rather TF
 from my VPC lattice lab4 
 vpc modules 
