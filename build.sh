@@ -2,6 +2,8 @@ tstart=$(date +%s)
 time make fixed
 time make cluster
 time make addons
+sleep 30
+time make addons
 time make grafana
 cd 05-keycloak-grafana/blog
 ./05a*
