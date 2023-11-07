@@ -9,11 +9,34 @@ kubectl 1.23 - needs upgrading
 eksctl 0.144
 
 
-
-eksctl delete cluster  --name eks-workshop
-
-
+```bash
 git clone https://github.com/awsandy/eks-gitops.git
+```
+
+
+## Create and fix Route53 zone
+```bash
+cd 01a-dns
+terraform init
+terraform apply -auto-approve
+```
+
+
+```bash
+cd ~/environment
+time eksctl delete cluster  --name eks-workshop     # ~8min
+fsid=$(aws efs describe-file-systems --query FileSystems[].FileSystemId --output text)
+for mtid in $(aws efs describe-mount-targets --file-system-id $fsid --query MountTargets[].MountTargetId --output text);do
+echo $mtid
+aws efs delete-mount-target --mount-target-id $mtid
+done
+aws efs delete-file-system --file-system-id $fsid
+dbi=$(aws rds describe-db-instances --query DBInstances[].DBInstanceIdentifier --output text)
+aws rds delete-db-instance --db-instance-identifier $dbi --skip-final-snapshot 
+```
+
+
+
 
 Don't provison cluster with eksctl - but rather TF
 from my VPC lattice lab4 
