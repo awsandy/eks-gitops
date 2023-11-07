@@ -11,15 +11,15 @@ resource "local_file" "json_config" {
             "Changes": [{
             "Action": "CREATE",
                         "ResourceRecordSet": {
-                                    "Name": ${aws_route53_zone.keycloak.name},
+                                    "Name": "${aws_route53_zone.keycloak.name}",
                                     "Type": "NS",
                                     "TTL": 300,
                                  "ResourceRecords": [
                                   { 
-                                  "Value": ${aws_route53_zone.keycloak.name_servers[0]}},
-                                  "Value": ${aws_route53_zone.keycloak.name_servers[1]}},
-                                  "Value": ${aws_route53_zone.keycloak.name_servers[2]}},
-                                  "Value": ${aws_route53_zone.keycloak.name_servers[3]}}
+                                  "Value": "${aws_route53_zone.keycloak.name_servers[0]}"},
+                                  "Value": "${aws_route53_zone.keycloak.name_servers[1]}"},
+                                  "Value": "${aws_route53_zone.keycloak.name_servers[2]}"},
+                                  "Value": "${aws_route53_zone.keycloak.name_servers[3]}"}
                                   ]
 }}]
 }
