@@ -7,9 +7,6 @@
 #  ... truncated for brevity
 #}
 
-
-
-
 provider "kubernetes" {
   host                   = data.aws_ssm_parameter.cluster1_endpoint.value
   cluster_ca_certificate = base64decode(data.aws_ssm_parameter.cluster1_certificate_authority_data.value)
