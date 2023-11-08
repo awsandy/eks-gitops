@@ -56,7 +56,7 @@ clean:
 
 cluster:
 	@echo "$(GRE) INFO: Building Cluster resources"
-	cd 02-Cluster/ && \
+	cd 03-Cluster/ && \
 	terraform init && \
 	./build.sh
 
