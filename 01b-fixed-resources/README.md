@@ -1,0 +1,1 @@
+aws route53 change-resource-record-sets --hosted-zone-id $hzid --change-batch file://a.json
