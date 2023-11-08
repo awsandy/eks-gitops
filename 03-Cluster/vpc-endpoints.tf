@@ -36,7 +36,29 @@ module "vpc_endpoints" {
       private_dns_enabled = true
       subnet_ids          = module.vpc.private_subnets
       #policy              = data.aws_iam_policy_document.generic_endpoint_policy.json
-    }
+    },
+    xray = {
+      service             = "xray"
+      private_dns_enabled = true
+      subnet_ids          = module.vpc.private_subnets
+    },
+    elasticloadbalancing = {
+      service             = "elasticloadbalancing"
+      private_dns_enabled = true
+      subnet_ids          = module.vpc.private_subnets
+    },
+    ecr_api = {
+      service             = "ecr.api"
+      private_dns_enabled = true
+      subnet_ids          = module.vpc.private_subnets
+      #policy              = data.aws_iam_policy_document.generic_endpoint_policy.json
+    },
+    ecr_dkr = {
+      service             = "ecr.dkr"
+      private_dns_enabled = true
+      subnet_ids          = module.vpc.private_subnets
+      #policy              = data.aws_iam_policy_document.generic_endpoint_policy.json
+    },
 
   }
 
