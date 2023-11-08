@@ -10,10 +10,10 @@ echo "gitops"
 cd ../04-gitops
 terraform destroy --auto-approve
 echo "addons"
-cd ../04-Addons
+cd ../03-Addons
 terraform destroy --auto-approve
 echo "cluster"
-cd ../03-Cluster
+cd ../02-Cluster
 terraform destroy --auto-approve
 echo "fixed resources"
 cd ../01b-fixed-resources

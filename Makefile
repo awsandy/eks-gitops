@@ -56,13 +56,13 @@ clean:
 
 cluster:
 	@echo "$(GRE) INFO: Building Cluster resources"
-	cd 03-Cluster/ && \
+	cd 02-Cluster/ && \
 	terraform init && \
 	./build.sh
 
 addons:
 	@echo "$(GRE) INFO: Add on resources"
-	cd 04-Addons/ && \
+	cd 03-Addons/ && \
 	terraform init -reconfigure && \
 	terraform validate && \
 	terraform apply --auto-approve
