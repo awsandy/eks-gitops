@@ -62,14 +62,14 @@ cluster:
 
 addons:
 	@echo "$(GRE) INFO: Add on resources"
-	cd 03-Addons/ && \
+	cd 04-Addons/ && \
 	terraform init -reconfigure && \
 	terraform validate && \
 	terraform apply --auto-approve
 
 gitops:
 	@echo "$(GRE) INFO: gitops resources"
-	cd 04-gitops/ && \
+	cd 07-gitops/ && \
 	terraform init -reconfigure && \
 	terraform validate && \
 	terraform apply --auto-approve 
