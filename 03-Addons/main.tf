@@ -77,7 +77,7 @@ module "eks_blueprints_addons" {
   #enable_karpenter                       = true
   #enable_kube_prometheus_stack           = true
   enable_metrics_server                   = true
-  enable_aws_cloudwatch_metrics           = true # container insights
+  enable_aws_cloudwatch_metrics           = false # container insights
 
   enable_cert_manager                     = true   #turned off in observability accel)
 
@@ -114,8 +114,8 @@ module "eks_blueprints_addons" {
   fargate_fluentbit_cw_log_group = {  #/eks-cluster1/fargate20231031163741692800000002
     create          = true
     use_name_prefix = true # Set this to true to enable name prefi
-    name_prefix       = "eks-cluster1-fargate-"
-    name = "/eks-cluster1/fargate"
+    name_prefix       = format("eks-%s-fargate-",data.aws_ssm_parameter.cluster1_name.value)
+    name = format("/%s/fargate",data.aws_ssm_parameter.cluster1_name.value)
     retention_in_days = 7
     #kms_key_id        = "arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab"
     skip_destroy      = false
@@ -132,18 +132,18 @@ module "eks_blueprints_addons" {
   #  ]
   #}
 
-  aws_for_fluentbit_cw_log_group = {  # creates log group "/aws/eks/c1-lattice/aws-fluentbit-logs"
-    create          = true
-    use_name_prefix = true # Set this to true to enable name prefix
-    name_prefix     = "eks-cluster1-"
-    retention       = 7
-    skip_destroy      = false
-  }
+  #aws_for_fluentbit_cw_log_group = {  # creates log group "/aws/eks/c1-lattice/aws-fluentbit-logs"
+  #  create          = true
+  #  use_name_prefix = true # Set this to true to enable name prefix
+  #  name_prefix     = "eks-cluster1-"
+  #  retention       = 7
+  #  skip_destroy      = false
+  #}
 
 
-  aws_cloudwatch_metrics = {
-    namespace=kubernetes_namespace_v1.cw-metrics.id
-  }
+  #aws_cloudwatch_metrics = {
+  #  namespace=kubernetes_namespace_v1.cw-metrics.id
+  #}
 
   metrics_server = {
     namespace=kubernetes_namespace_v1.metrics.id
