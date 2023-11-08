@@ -281,7 +281,7 @@ resource "kubectl_manifest" "karpenter_example_deployment" {
     metadata:
       name: inflate
     spec:
-      replicas: 0
+      replicas: 3
       selector:
         matchLabels:
           app: inflate
