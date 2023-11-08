@@ -57,6 +57,14 @@ module "eks_blueprints_addons" {
   source = "aws-ia/eks-blueprints-addons/aws"
   version = "~> 1.9" #ensure to update this to the latest/desired version
 
+  eks_addons = {
+      amazon-cloudwatch-observability = {
+        most_recent = true
+      }
+    }
+
+
+
   cluster_name      = data.aws_ssm_parameter.cluster1_name.value
   cluster_endpoint  = data.aws_ssm_parameter.cluster1_endpoint.value
   cluster_version   = data.aws_ssm_parameter.cluster1_version.value
@@ -80,6 +88,7 @@ module "eks_blueprints_addons" {
     name          = "external-dns"
     namespace     = "external-dns"
     create_namespace = true
+    depends_on = [module.eks_blueprints_addons.aws_load_balancer_controller]
   }
   external_dns_route53_zone_arns = [data.aws_route53_zone.keycloak.arn]
 
