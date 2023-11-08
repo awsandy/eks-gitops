@@ -74,7 +74,7 @@ module "eks_blueprints_addons" {
   #enable_karpenter                       = true
   #enable_kube_prometheus_stack           = true
   enable_metrics_server                   = true
-  enable_aws_cloudwatch_metrics           = false # container insights
+  enable_aws_cloudwatch_metrics           = true # container insights
 
   enable_cert_manager                     = true   #turned off in observability accel)
 
@@ -138,9 +138,10 @@ module "eks_blueprints_addons" {
   #}
 
 
-  #aws_cloudwatch_metrics = {
-  #  namespace=kubernetes_namespace_v1.cw-metrics.id
-  #}
+  aws_cloudwatch_metrics = {
+    namespace="cw-metrics"
+    create_namespace = true
+  }
 
   metrics_server = {
     namespace=kubernetes_namespace_v1.metrics.id
