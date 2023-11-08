@@ -40,7 +40,7 @@ provider "kubectl" {
 
 
 
-
+## base
 
 module "aws_observability_accelerator" {
   # use release tags and check for the latest versions
@@ -55,6 +55,7 @@ module "aws_observability_accelerator" {
   #enable_dashboard=true
 }
 
+# eks 
 
 module "eks_monitoring" {
 
@@ -63,7 +64,7 @@ module "eks_monitoring" {
   eks_cluster_id = data.aws_ssm_parameter.cluster1_name.value
 
   # deploys AWS Distro for OpenTelemetry operator into the cluster
-  enable_amazon_eks_adot = true
+  #enable_amazon_eks_adot = true
 
   # reusing existing certificate manager? defaults to true
   enable_cert_manager = false
@@ -93,7 +94,8 @@ module "eks_monitoring" {
     global_scrape_timeout  = "15s"
   }
 
-  enable_logs = true
+  enable_logs = true # logs for the observability accelerator itself (I think)
+  # enable_tracing = true
 
   #tags = local.tags
 
@@ -103,32 +105,11 @@ module "eks_monitoring" {
 }
 
 
-
-
-
-
-
-#module "eks_monitoring" {
-#  source = "github.com/aws-observability/terraform-aws-observability-accelerator//modules/eks-monitoring?ref=v2.1.0"
-
- # eks_cluster_id = data.aws_ssm_parameter.cluster1_name.value
-
- # dashboards_folder_id            = module.aws_observability_accelerator.grafana_dashboards_folder_id
- # managed_prometheus_workspace_id = module.aws_observability_accelerator.managed_prometheus_workspace_id
-
- # managed_prometheus_workspace_endpoint = module.aws_observability_accelerator.managed_prometheus_workspace_endpoint
- # managed_prometheus_workspace_region   = module.aws_observability_accelerator.managed_prometheus_workspace_region
-
-  #enable_logs = true
- # enable_tracing = true
-#}
-
-
 # Deploy the ADOT Container Insights
 
-module "eks_container_insights" {
-  source = "github.com/aws-observability/terraform-aws-observability-accelerator//modules/eks-container-insights"
+#module "eks_container_insights" {
+#  source = "github.com/aws-observability/terraform-aws-observability-accelerator//modules/eks-container-insights"
 
   #source = "github.com/aws-observability/terraform-aws-observability-accelerator//modules/eks-container-insights?ref=v2.5.4"
-  eks_cluster_id = data.aws_ssm_parameter.cluster1_name.value
-}
+#  eks_cluster_id = data.aws_ssm_parameter.cluster1_name.value
+#}
