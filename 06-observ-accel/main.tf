@@ -46,12 +46,12 @@ module "aws_observability_accelerator" {
   # use release tags and check for the latest versions
   # https://github.com/aws-observability/terraform-aws-observability-accelerator/releases
   source = "github.com/aws-observability/terraform-aws-observability-accelerator?ref=v2.10.0"
-
+  enable_managed_prometheus = true
   aws_region     = data.aws_region.current.name
   #eks_cluster_id = data.aws_ssm_parameter.cluster1_name.value
 
   # As Grafana shares a different lifecycle, we recommend using an existing workspace.
-  managed_grafana_workspace_id = data.aws_ssm_parameter.grafana-id.value
+  managed_grafana_workspace_id = aws_grafana_workspace.workshop.id
   #enable_dashboard=true
 }
 
@@ -67,14 +67,13 @@ module "eks_monitoring" {
   enable_amazon_eks_adot = true
 
   # reusing existing certificate manager? defaults to true
-  enable_cert_manager = false
+  enable_cert_manager = true
 
   # enable EKS API server monitoring
   enable_apiserver_monitoring = true
 
   # deploys external-secrets in to the cluster
   enable_external_secrets = true
-  # grafana_api_key         = aws_grafana_workspace_api_key.key.key
   grafana_api_key         = aws_grafana_workspace_api_key.key.key
   target_secret_name      = "grafana-admin-credentials"
   target_secret_namespace = "grafana-operator"
@@ -92,7 +91,6 @@ module "eks_monitoring" {
   prometheus_config = {
     global_scrape_interval = "60s"
     global_scrape_timeout  = "15s"
-
   }
 
   enable_logs = true # logs for the observability accelerator itself (I think)
