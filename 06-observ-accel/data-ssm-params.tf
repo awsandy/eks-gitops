@@ -7,10 +7,6 @@ data "aws_ssm_parameter" "grafana-id" {
   
 }
 
-data "aws_ssm_parameter" "grafana_api_key" {
-    name        = "/workshop/grafana-key"
-
-}
 
 data "aws_ssm_parameter" "cluster1_endpoint" {
   name        = "/workshop/cluster1_endpoint"
