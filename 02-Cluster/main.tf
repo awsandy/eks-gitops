@@ -168,10 +168,11 @@ module "karpenter" {
   irsa_oidc_provider_arn = module.eks.oidc_provider_arn
 
 
-  iam_role_additional_policies = {
-    AmazonSSMManagedInstanceCore = "arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore"
-    CloudWatchAgentServerPolicy = "arn:aws:iam::aws:policy/CloudWatchAgentServerPolicy"
-  }
+  iam_role_additional_policies = [ 
+    "arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore",
+     "arn:aws:iam::aws:policy/CloudWatchAgentServerPolicy"
+  ]
+  
 
   policies = {
     AmazonSSMManagedInstanceCore = "arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore"
