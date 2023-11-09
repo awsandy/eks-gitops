@@ -203,17 +203,17 @@ output "cluster_vpcid" {
 
 output "irsa_name" {
   description = "The name of the IAM role for service accounts"
-  value       = try(aws_iam_role.irsa[0].name, null)
+  value       = try(module.karpenter.aws_iam_role.irsa[0].name, null)
 }
 
 output "irsa_arn" {
   description = "The Amazon Resource Name (ARN) specifying the IAM role for service accounts"
-  value       = try(aws_iam_role.irsa[0].arn, null)
+  value       = try(module.karpenter.aws_iam_role.irsa[0].arn, null)
 }
 
 output "irsa_unique_id" {
   description = "Stable and unique string identifying the IAM role for service accounts"
-  value       = try(aws_iam_role.irsa[0].unique_id, null)
+  value       = try(module.karpenter.aws_iam_role.irsa[0].unique_id, null)
 }
 
 ################################################################################
@@ -235,14 +235,7 @@ output "queue_url" {
   value       = try(module.karpenter.aws_sqs_queue.this[0].url, null)
 }
 
-################################################################################
-# Node Termination Event Rules
-################################################################################
 
-output "event_rules" {
-  description = "Map of the event rules created and their attributes"
-  value       = module.karpenter.aws_cloudwatch_event_rule.this
-}
 
 ################################################################################
 # Node IAM Role
