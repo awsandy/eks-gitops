@@ -246,10 +246,10 @@ output "role_name" {
   value       = try(module.karpenter.aws_iam_role.this[0].name, null)
 }
 
-output "role_arn" {
-  description = "The Amazon Resource Name (ARN) specifying the IAM role"
-  value       = try(module.karpenter.aws_iam_role.this[0].arn, var.iam_role_arn)
-}
+#output "role_arn" {
+#  description = "The Amazon Resource Name (ARN) specifying the IAM role"
+#  value       = try(module.karpenter.aws_iam_role.this[0].arn, var.iam_role_arn)
+#}
 
 output "role_unique_id" {
   description = "Stable and unique string identifying the IAM role"
