@@ -92,11 +92,11 @@ module "eks_monitoring" {
   prometheus_config = {
     global_scrape_interval = "60s"
     global_scrape_timeout  = "15s"
-    
+
   }
 
   enable_logs = true # logs for the observability accelerator itself (I think)
-  # enable_tracing = true
+  enable_tracing = true
 
   #tags = local.tags
 
