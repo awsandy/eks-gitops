@@ -7,7 +7,7 @@ resource "kubectl_manifest" "karpenter_example_deployment" {
     metadata:
       name: inflate
     spec:
-      replicas: 6
+      replicas: 3
       selector:
         matchLabels:
           app: inflate
@@ -22,7 +22,7 @@ resource "kubectl_manifest" "karpenter_example_deployment" {
               image: public.ecr.aws/eks-distro/kubernetes/pause:3.7
               resources:
                 requests:
-                  cpu: "0.5"
+                  cpu: "2.1"
           priorityClassName: low-priority
           affinity:
             podAntiAffinity:
