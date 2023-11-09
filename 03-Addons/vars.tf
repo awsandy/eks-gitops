@@ -1,1 +1,1 @@
-./02-Cluster/vars.tf
+../02-Cluster/vars.tf
