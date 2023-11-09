@@ -20,18 +20,6 @@ resource "aws_ssm_parameter" "grafana-id" {
   }
 }
 
-resource "aws_ssm_parameter" "grafana-key" {
-  name        = "/workshop/grafana-key"
-  description = "The Grafana key"
-  type        = "String"
-  value       = aws_grafana_workspace_api_key.key.key
-
-  tags = {
-    workshop = "EKS Workshop"
-  }
-}
-
-
 resource "aws_ssm_parameter" "keycloak_cert_arn" {
   name        = "/workshop/keycloak_cert_arn"
   description = "keycloak_cert_arn"
