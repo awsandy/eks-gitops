@@ -66,8 +66,8 @@ module "eks_monitoring" {
   # deploys AWS Distro for OpenTelemetry operator into the cluster ! required
   enable_amazon_eks_adot = true
 
-  # reusing existing certificate manager? defaults to true
-  enable_cert_manager = true
+  # reusing existing certificate manager? set to false  defaults to true
+  enable_cert_manager = false
 
   # enable EKS API server monitoring
   enable_apiserver_monitoring = true
