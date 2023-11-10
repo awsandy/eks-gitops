@@ -1,4 +1,4 @@
-resource "aws_grafana_workspace" "workshop" {
+resource"aws_grafana_workspace" "workshop"  {
   account_access_type      = "CURRENT_ACCOUNT"
   authentication_providers = ["SAML"]
   permission_type          = "SERVICE_MANAGED"
