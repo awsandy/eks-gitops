@@ -5,4 +5,5 @@ helm install keycloak bitnami/keycloak \
     --create-namespace \
     --namespace keycloak \
     -f keycloak_values.yaml
+echo $?
 
