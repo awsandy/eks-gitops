@@ -1,7 +1,4 @@
-https://github.com/aws-ia/terraform-aws-eks-blueprints-addons
-
-
-on install: 
+## on install: 
  --set webhook.securePort=10260 for helm chart (allows fargate and manahged nodes to work)
  https://github.com/cert-manager/cert-manager/issues/3237
 
@@ -14,8 +11,7 @@ kubectl cert-manager check api
 
 kubectl get ClusterIssuer
 
-IMPORTED-CERTS:
+See Tests directory and test-cert-manager.sh
+
+## IMPORTED-CERTS:
 https://aws.amazon.com/blogs/containers/serve-distinct-domains-with-tls-powered-by-acm-on-amazon-eks/
-
-
-external secrets done in observability accelerator
