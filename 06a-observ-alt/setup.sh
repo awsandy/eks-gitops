@@ -1,6 +1,6 @@
 terraform init
 terraform apply -auto-approve
-git clone https://github.com/aws-samples/terraform-aws-observability-accelerator.git
+git clone https://github.com/aws-observability/terraform-aws-observability-accelerator.git
 cd terraform-aws-observability-accelerator/examples/existing-cluster-with-base-and-infra
 pwd
 terraform init
