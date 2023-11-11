@@ -1,9 +1,11 @@
 terraform init
 terraform apply -auto-approve
+git clone https://github.com/aws-samples/terraform-aws-observability-accelerator.git
 cd terraform-aws-observability-accelerator/examples/existing-cluster-with-base-and-infra
+pwd
 terraform init
 # (mandatory) AWS Region where your resources will be located
-aws_region = $(aws configure get region)
+aws_region = "eu-west-1"
 
 # (mandatory) EKS Cluster name
 eks_cluster_id = $(aws eks list-clusters | jq -r '.clusters[]')
