@@ -24,6 +24,10 @@ data "aws_ssm_parameter" "cluster1_certificate_authority_data" {
   name        = "/workshop/cluster1_certificate_authority_data"
 }
 
+data "aws_ssm_parameter" "hzid" {
+  name        = "/workshop/hzid"
+}
+
   #cluster_name      = module.eks.cluster_name
   #cluster_endpoint  = module.eks.cluster_endpoint
   #cluster_version   = module.eks.cluster_version
