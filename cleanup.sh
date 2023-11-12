@@ -14,6 +14,7 @@ cd ../03-Addons
 terraform destroy --auto-approve
 echo "cluster"
 cd ../02-Cluster
+kubectl delete Provisioner/default -n karpenter 
 terraform destroy --auto-approve
 echo "fixed resources"
 cd ../01b-fixed-resources
