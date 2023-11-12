@@ -90,10 +90,9 @@ fixed:
 
 observ:
 	@echo "$(GRE) INFO: Fixed resources"
-	cd 06-observ-accel/ && \
-	terraform init -reconfigure && \
-	terraform validate && \
-	terraform apply --auto-approve
+	cd 06a-observw-accel/ && \
+	./setup.sh
+
 
 update-kube-config:
 	@echo "$(GRE) INFO: Configuring Kube config."

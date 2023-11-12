@@ -97,4 +97,13 @@ https://github.com/aws-samples/configure-keycloak-on-eks-using-terraform
 
 
 
+-----
+
+make fixed
+make cluster
+# need for aws_load_bal
+make addons
+make observ
+
+
 
