@@ -66,18 +66,6 @@ module "eks_monitoring" {
 
   # reusing existing certificate manager? defaults to true
   enable_cert_manager = true
-  cert_manager = {
-      #namespace="cert-manager"
-      #create_namespace = true
-      set = [
-      {
-        name  = "webhook.securePort"
-        value = 10260                  # for fargatre
-      },
-      ]
-    }
-
-
 
   # enable EKS API server monitoring
   enable_apiserver_monitoring = true
@@ -102,6 +90,18 @@ module "eks_monitoring" {
     global_scrape_interval = "60s"
     global_scrape_timeout  = "15s"
   }
+
+  cert_manager = {
+    #namespace="cert-manager"
+    #create_namespace = true
+    set = [
+      {
+        name  = "webhook.securePort"
+        value = 10260                  # for fargatre
+      }
+    ]
+  }
+
 
   enable_logs = true
 
