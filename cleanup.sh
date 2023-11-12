@@ -1,6 +1,6 @@
 tstart=$(date +%s)
 echo "observ"
-cd 06-observ-accel
+cd 05-observw-eks
 terraform destroy --auto-approve 
 echo "keycloak"
 kubectl delete ns keycloak || true 
