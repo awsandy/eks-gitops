@@ -91,16 +91,16 @@ module "eks_monitoring" {
     global_scrape_timeout  = "15s"
   }
 
-  cert_manager = {
-    #namespace="cert-manager"
-    #create_namespace = true
-    set = [
-      {
-        name  = "webhook.securePort"
-        value = 10260                  # for fargatre
-      }
-    ]
-  }
+  #cert_manager = {
+  #  #namespace="cert-manager"
+  #  #create_namespace = true
+  #  set = [
+  #    {
+  #      name  = "webhook.securePort"
+  #      value = 10260                  # for fargatre
+  #    }
+  #  ]
+  #}
 
 
   enable_logs = true
