@@ -103,6 +103,9 @@ make fixed
 make cluster
 # need for aws_load_bal
 make addons
+# relies on aws_load_bal
+make keycloak    ## adds Grafana workspace first
+# relies on keycloak
 make observ
 
 

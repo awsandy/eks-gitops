@@ -3,7 +3,7 @@ CLUSTER_NAME=$(aws eks list-clusters | jq -r '.clusters[]')
 WORKSPACE_NAME=keycloak-blog      # Change this if you specified a different name for the AMG workspace.
 KEYCLOAK_NAMESPACE=keycloak
 KEYCLOAK_REALM_AMG=amg
-SETUP_SCRIPT_DIR="${ENV_BASE_DIR}/eks-gitops/07-observw-keycloak"
+SETUP_SCRIPT_DIR="${ENV_BASE_DIR}/eks-gitops/04-observw-grafana-keycloak"
 if [ ! -f "${SETUP_SCRIPT_DIR}/keycloak-setup.sh" ]; then
   echo "ERROR: Environment variable ENV_BASE_DIR is set to '${ENV_BASE_DIR}'"
   echo "ERROR: Script '${SETUP_SCRIPT_DIR}/keycloak-setup.sh' not found."

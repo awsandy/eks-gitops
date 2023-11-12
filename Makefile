@@ -54,6 +54,14 @@ clean:
 	@echo "$(RED) INFO: Removing local Terraform generated files"
 	@rm -rf .terraform* terraform.tfs*
 
+fixed:
+	@echo "$(GRE) INFO: Fixed resources"
+	cd 01b-fixed-resources/ && \
+	terraform init -reconfigure && \
+	terraform validate && \
+	terraform apply --auto-approve
+
+
 cluster:
 	@echo "$(GRE) INFO: Building Cluster resources"
 	cd 02-Cluster/ && \
@@ -67,31 +75,23 @@ addons:
 	terraform validate && \
 	terraform apply --auto-approve
 
-gitops:
-	@echo "$(GRE) INFO: gitops resources"
-	cd 07-gitops/ && \
-	terraform init -reconfigure && \
-	terraform validate && \
-	terraform apply --auto-approve 
-
 grafana:
 	@echo "$(GRE) INFO: Add on resources"
-	cd 05-keycloak-grafana/ && \
-	terraform init -reconfigure && \
-	terraform validate && \
-	terraform apply --auto-approve
+	cd 04-observw-grafana-keycloak/ && \
+	./setup.sh \
 
-fixed:
-	@echo "$(GRE) INFO: Fixed resources"
-	cd 01b-fixed-resources/ && \
-	terraform init -reconfigure && \
-	terraform validate && \
-	terraform apply --auto-approve
 
 observ:
 	@echo "$(GRE) INFO: Fixed resources"
-	cd 06a-observw-accel/ && \
+	cd 05-observw-eks/ && \
 	./setup.sh
+
+gitops:
+	@echo "$(GRE) INFO: gitops resources"
+	cd 08-gitops/ && \
+	terraform init -reconfigure && \
+	terraform validate && \
+	terraform apply --auto-approve 
 
 
 update-kube-config:
