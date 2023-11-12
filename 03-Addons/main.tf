@@ -76,21 +76,21 @@ module "eks_blueprints_addons" {
   enable_metrics_server                   = true
   enable_aws_cloudwatch_metrics           = true # container insights
 
-  enable_cert_manager                     = true   #turned off in observability accel)
+  enable_cert_manager                     = false   #turned on in observability accel)
   cert_manager_route53_hosted_zone_arns  = [format("arn:aws:route53:::hostedzone/%s",data.aws_ssm_parameter.hzid.value)] 
 
-  cert_manager = {
-      depends_on = [module.eks_blueprints_addons.aws_load_balancer_controller]
-      namespace="cert-manager"
-      create_namespace = true
-      set = [
-      {
-        name  = "webhook.securePort"
-        value = 10260                  # for fargatre
-      },
-      ]
-    }
-    
+  #cert_manager = {
+  #    depends_on = [module.eks_blueprints_addons.aws_load_balancer_controller]
+  #    namespace="cert-manager"
+  #    create_namespace = true
+  #    set = [
+  #    {
+  #      name  = "webhook.securePort"
+  #      value = 10260                  # for fargatre
+  #    },
+  #    ]
+  #  }
+
   enable_external_dns                    = true
   external_dns = {
     name          = "external-dns"

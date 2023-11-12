@@ -2,6 +2,7 @@ terraform init
 terraform apply -auto-approve
 git clone https://github.com/aws-observability/terraform-aws-observability-accelerator.git
 cd terraform-aws-observability-accelerator/examples/existing-cluster-with-base-and-infra
+cp ../../../main.tf.sav main.tf
 pwd
 terraform init
 # (mandatory) AWS Region where your resources will be located
