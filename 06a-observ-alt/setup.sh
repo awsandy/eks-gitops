@@ -6,10 +6,10 @@ cp ../../../main.tf.sav main.tf
 pwd
 terraform init
 # (mandatory) AWS Region where your resources will be located
-export TF_VAR_aws_region = "eu-west-1"
+export TF_VAR_aws_region="eu-west-1"
 
 # (mandatory) EKS Cluster name
-export TF_VAR_eks_cluster_id = $(aws eks list-clusters | jq -r '.clusters[]')
+export TF_VAR_eks_cluster_id=$(aws eks list-clusters | jq -r '.clusters[]')
 
 gid=$(aws grafana list-workspaces --query workspaces[].id --output text)
 export TF_VAR_managed_grafana_workspace_id=$gid
