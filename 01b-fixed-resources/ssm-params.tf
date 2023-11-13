@@ -18,3 +18,10 @@ resource "aws_ssm_parameter" "keycloak_cert_arn" {
     workshop = "EKS Workshop"
   }
 }
+
+data "aws_ssm_parameter" "grafana-id" {
+  name        = "/workshop/grafana-id"
+  type        = "String"
+  value       = aws_grafana_workspace.workshop.id
+  
+}

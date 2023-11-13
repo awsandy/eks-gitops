@@ -78,8 +78,7 @@ addons:
 grafana:
 	@echo "$(GRE) INFO: Add on resources"
 	cd 04-observw-grafana-keycloak/ && \
-	./setup.sh \
-
+	./setup.sh 
 
 observ:
 	@echo "$(GRE) INFO: Fixed resources"
