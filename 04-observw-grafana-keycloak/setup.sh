@@ -1,3 +1,7 @@
+acc=$(aws sts get-caller-identity --query Account --output text)
+pa="arn:aws:iam::$acc:policy/OneObservabilityWorkshopKeycloakSecretStorePolicy"
+echo $pa
+aws iam delete-policy --policy-arn $pa
 ENV_BASE_DIR=~/environment     # Change this if you executed the `envsetup.sh` script in a different location.
 CLUSTER_NAME=$(aws eks list-clusters | jq -r '.clusters[]')
 WORKSPACE_NAME=demo-amg      # Change this if you specified a different name for the AMG workspace.
