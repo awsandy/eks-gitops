@@ -7,6 +7,8 @@ kubectl delete statefulset keycloak-postgresql -n keycloak || true
 kubectl delete ns keycloak || true
 aws secretsmanager delete-secret --secret-id oneobservabilityworkshop/keycloak --force-delete-without-recovery || true
 aws iam delete-role --role-name KeycloakSecretStore || true
+helm uninstall external-secrets -n external-secrets || true
+kubectl delete ns external-secrets || true
 ENV_BASE_DIR=~/environment     # Change this if you executed the `envsetup.sh` script in a different location.
 CLUSTER_NAME=$(aws eks list-clusters | jq -r '.clusters[]')
 WORKSPACE_NAME=demo-amg      # Change this if you specified a different name for the AMG workspace.
