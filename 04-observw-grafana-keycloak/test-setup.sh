@@ -9,6 +9,8 @@ aws secretsmanager delete-secret --secret-id oneobservabilityworkshop/keycloak -
 aws iam delete-role --role-name KeycloakSecretStore || true
 helm uninstall external-secrets -n external-secrets || true
 kubectl delete ns external-secrets || true
+echo "sleep 10"
+sleep 10
 ENV_BASE_DIR=~/environment     # Change this if you executed the `envsetup.sh` script in a different location.
 CLUSTER_NAME=$(aws eks list-clusters | jq -r '.clusters[]')
 WORKSPACE_NAME=demo-amg      # Change this if you specified a different name for the AMG workspace.
