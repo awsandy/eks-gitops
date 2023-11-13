@@ -1,6 +1,6 @@
 ENV_BASE_DIR=~/environment     # Change this if you executed the `envsetup.sh` script in a different location.
 CLUSTER_NAME=$(aws eks list-clusters | jq -r '.clusters[]')
-WORKSPACE_NAME=keycloak-blog      # Change this if you specified a different name for the AMG workspace.
+WORKSPACE_NAME=demo-amg      # Change this if you specified a different name for the AMG workspace.
 KEYCLOAK_NAMESPACE=keycloak
 KEYCLOAK_REALM_AMG=amg
 SETUP_SCRIPT_DIR="${ENV_BASE_DIR}/eks-gitops/04-observw-grafana-keycloak"
