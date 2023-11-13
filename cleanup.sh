@@ -18,6 +18,7 @@ kubectl delete deployment inflate || true
 kubectl delete ns karpenter || true
 kubectl delete deployment inflate || true
 kubectl delete Provisioner default -n karpenter || true
+sleep 10
 terraform destroy --auto-approve
 echo "fixed resources"
 cd ../01b-fixed-resources

@@ -371,8 +371,8 @@ function install_external_secrets() {
   if [ $CMD_RESULT -ne 0 ]; then
     handle_error "ERROR: Failed to execute helm install external-secrets."
   fi
-  echo "sleeping 90s for external-secrets to start..."
-  sleep 90
+  echo "sleeping 60s for external-secrets to start..."
+  sleep 60
 }
 
 function configure_keycloak_password() {
