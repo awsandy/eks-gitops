@@ -3,7 +3,5 @@ kind: ExternalSecret
 metadata:
   name: example-secret
 spec:
-  backendType: secretsManager
-  region: eu-west-1
   dataFrom:
     - YOUR_SECRET
