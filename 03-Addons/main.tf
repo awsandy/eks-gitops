@@ -166,15 +166,15 @@ module "eks_blueprints_addons" {
     ]
   }
 
-  enable_external_secrets = true
+  #enable_external_secrets = true    # do in addons
 
-  external_secrets = {
-    name          = "external-secrets"
-    chart_version = "0.9.9"
-    repository    = "https://charts.external-secrets.io"
-    namespace     = "external-secrets"
-    create_namespace = true
-  }
+  #external_secrets = {
+  #  name          = "external-secrets"
+  #  chart_version = "0.9.9"
+  #  repository    = "https://charts.external-secrets.io"
+  #  namespace     = "external-secrets"
+  #  create_namespace = true
+  #}
 
 
 
