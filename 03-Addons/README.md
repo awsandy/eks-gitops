@@ -18,4 +18,12 @@ IMPORTED-CERTS:
 https://aws.amazon.com/blogs/containers/serve-distinct-domains-with-tls-powered-by-acm-on-amazon-eks/
 
 
-external secrets done in observability accelerator
+## external secrets
+
+https://aws.amazon.com/blogs/containers/leverage-aws-secrets-stores-from-eks-fargate-with-external-secrets-operator/
+https://vinta.ws/code/amazon-eks-setup-kubernetes-external-secrets-with-aws-secret-manager.html
+
+docs:
+
+https://external-secrets.io/latest/introduction/getting-started/
+
