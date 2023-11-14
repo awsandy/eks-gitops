@@ -4,4 +4,5 @@ metadata:
   name: example-secret
 spec:
   dataFrom:
-    - YOUR_SECRET
+  - extract:
+      key: YOUR_SECRET
