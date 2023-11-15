@@ -24,6 +24,13 @@ resource "kubectl_manifest" "karpenter_example_deployment" {
                 requests:
                   cpu: "1"
           priorityClassName: low-priority
+          affinity:
+            podAntiAffinity:
+              preferredDuringSchedulingIgnoredDuringExecution:
+              - labelSelector:
+                  matchLabels:
+                    app: inflate
+                topologyKey: topology.kubernetes.io/zone
   YAML
 
   depends_on = [
