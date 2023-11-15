@@ -124,7 +124,7 @@ module "eks" {
       instance_types  = ["t3a.xlarge"]
       min_size        = 1
       max_size        = 3
-      desired_size    = 3
+      desired_size    = 2
       subnet_ids      = module.vpc.private_subnets
     }
       #create_iam_role          = true
