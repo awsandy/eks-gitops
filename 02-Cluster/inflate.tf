@@ -26,7 +26,7 @@ resource "kubectl_manifest" "karpenter_example_deployment" {
           priorityClassName: low-priority
           affinity:
             podAntiAffinity:
-              requiredDuringSchedulingIgnoredDuringExecution:
+              preferredDuringSchedulingIgnoredDuringExecution:
               - labelSelector:
                   matchLabels:
                     app: inflate
