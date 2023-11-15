@@ -121,7 +121,7 @@ module "eks" {
   eks_managed_node_groups = {
     mg_5 = {
       node_group_name = "managed-ondemand"
-      instance_types  = ["t3a.xlarge"]
+      instance_types  = ["t3a.large"]
       min_size        = 1
       max_size        = 3
       desired_size    = 2
