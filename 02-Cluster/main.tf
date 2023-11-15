@@ -126,10 +126,10 @@ module "eks" {
       desired_size    = 3
       subnet_ids      = module.vpc.private_subnets
     }
-      create_iam_role          = true
-      iam_role_name            = "eks-mng-role"
-      iam_role_use_name_prefix = false
-      iam_role_description     = "EKS managed node group role"
+      #create_iam_role          = true
+      #iam_role_name            = "eks-mng-role"
+      #iam_role_use_name_prefix = false
+      #iam_role_description     = "EKS managed node group role"
     iam_role_additional_policies = {
       AmazonSSMManagedInstanceCore = "arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore"
       AmazonEKSWorkerNodePolicy = "arn:aws:iam::aws:policy/AmazonEKSWorkerNodePolicy"
