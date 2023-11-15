@@ -102,8 +102,8 @@ module "eks" {
   control_plane_subnet_ids = module.vpc.intra_subnets
 
   # Fargate profiles use the cluster primary security group so these are not utilized
-  #create_cluster_security_group = false
-  #create_node_security_group    = false
+  create_cluster_security_group = false
+  create_node_security_group    = false
 
   manage_aws_auth_configmap = true
   aws_auth_roles = [
@@ -127,24 +127,7 @@ module "eks" {
       desired_size    = 2
       subnet_ids      = module.vpc.private_subnets
     }
-      #create_iam_role          = true
-      #iam_role_name            = "eks-mng-role"
-      #iam_role_use_name_prefix = false
-      #iam_role_description     = "EKS managed node group role"
-    #iam_role_additional_policies = {
-    #  AmazonSSMManagedInstanceCore = "arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore",
-    #  AmazonEKSWorkerNodePolicy = "arn:aws:iam::aws:policy/AmazonEKSWorkerNodePolicy",
-    #  AmazonEC2ContainerRegistryReadOnly = "arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly",
-    #  AmazonEBSCSIDriverPolicy = "arn:aws:iam::aws:policy/service-role/AmazonEBSCSIDriverPolicy",
-    #  CloudWatchAgentServerPolicy = "arn:aws:iam::aws:policy/CloudWatchAgentServerPolicy"     
-    #}
-    #iam_role_additional_policies = [
-    #   "arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore",
-    #   "arn:aws:iam::aws:policy/AmazonEKSWorkerNodePolicy",
-    #  "arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly",
-    #  "arn:aws:iam::aws:policy/service-role/AmazonEBSCSIDriverPolicy",
-    #   "arn:aws:iam::aws:policy/CloudWatchAgentServerPolicy"     
-    #]
+
 
   }
   tags = merge(local.tags, {
