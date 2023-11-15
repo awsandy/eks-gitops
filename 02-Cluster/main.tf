@@ -101,8 +101,8 @@ module "eks" {
   control_plane_subnet_ids = module.vpc.intra_subnets
 
   # Fargate profiles use the cluster primary security group so these are not utilized
-  create_cluster_security_group = false
-  create_node_security_group    = false
+  #create_cluster_security_group = false
+  #create_node_security_group    = false
 
   manage_aws_auth_configmap = true
   aws_auth_roles = [
@@ -125,6 +125,13 @@ module "eks" {
       max_size        = 3
       desired_size    = 3
       subnet_ids      = module.vpc.private_subnets
+    }
+    iam_role_additional_policies = {
+      AmazonSSMManagedInstanceCore = "arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore"
+      AmazonEKSWorkerNodePolicy = "arn:aws:iam::aws:policy/AmazonEKSWorkerNodePolicy"
+      AmazonEC2ContainerRegistryReadOnly = "arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly"
+      AmazonEBSCSIDriverPolicy = "arn:aws:iam::aws:policy/service-role/AmazonEBSCSIDriverPolicy"
+      CloudWatchAgentServerPolicy = "arn:aws:iam::aws:policy/CloudWatchAgentServerPolicy"     
     }
   }
 
