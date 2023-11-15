@@ -117,7 +117,7 @@ module "eks" {
     },
   ]
 
-  managed_node_groups = {
+  eks_managed_node_groups = {
     mg_5 = {
       node_group_name = "managed-ondemand"
       instance_types  = ["t3a.large"]
