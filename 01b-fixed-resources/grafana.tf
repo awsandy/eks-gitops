@@ -22,3 +22,18 @@ resource "aws_iam_role" "grafana" {
     ]
   })
 }
+
+resource "aws_iam_role_policy_attachment" "prom-attach" {
+  role       = aws_iam_role.grafana.name
+  policy_arn = "arn:aws:iam::aws:policy/AmazonPrometheusQueryAccess"
+}
+
+resource "aws_iam_role_policy_attachment" "cw-attach" {
+  role       = aws_iam_role.grafana.name
+  policy_arn = "arn:aws:iam::aws:policy/service-role/AmazonGrafanaCloudWatchAccess"
+}
+
+resource "aws_iam_role_policy_attachment" "xray-attach" {
+  role       = aws_iam_role.grafana.name
+  policy_arn = "arn:aws:iam::aws:policy/AWSXrayReadOnlyAccess"
+}
