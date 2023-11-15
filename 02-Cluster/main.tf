@@ -93,6 +93,7 @@ module "eks" {
     coredns = {
       most_recent = true
     }
+  }
 
 
   vpc_id                   = module.vpc.vpc_id
