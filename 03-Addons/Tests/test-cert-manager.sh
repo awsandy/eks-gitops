@@ -8,6 +8,7 @@ kubectl get secret example-secret
 # acm not relevant as certs are internal to cert-manager
 #aws acm list-certificates --include keyTypes=
 #aws acm list-certificates
+# https://aws.amazon.com/blogs/containers/serve-distinct-domains-with-tls-powered-by-acm-on-amazon-eks/
 # imported certs:
 # openssl req -new -x509 -sha256 -nodes -newkey rsa:4096 -keyout private_rabbit.key -out certificate_rabbit.crt -subj "/CN=rabbit.local"
 # aws acm import-certificate --certificate fileb://certificate_rabbit.crt --private-key fileb://private_rabbit.key

@@ -12,6 +12,10 @@ https://aws-quickstart.github.io/cdk-eks-blueprints/addons/cert-manager/
 cert manager check:
 kubectl cert-manager check api
 
+self signed certs (openssl)
+https://aws.amazon.com/blogs/containers/serve-distinct-domains-with-tls-powered-by-acm-on-amazon-eks/
+
+
 kubectl get ClusterIssuer
 
 IMPORTED-CERTS:
