@@ -110,20 +110,20 @@ module "eks_blueprints_addons" {
 
  
 
-  fargate_fluentbit = {
-    flb_log_cw = true
+  #fargate_fluentbit = {
+  #  flb_log_cw = true
     #namespace=kubernetes_namespace_v1.fluentbit-fargate.id # default is aws_observability
-  }
+  #}
 
-  fargate_fluentbit_cw_log_group = {  #/eks-cluster1/fargate20231031163741692800000002
-    create          = true
-    use_name_prefix = true # Set this to true to enable name prefi
-    name_prefix       = format("eks-%s-fargate-",data.aws_ssm_parameter.cluster1_name.value)
-    name = format("/%s/fargate",data.aws_ssm_parameter.cluster1_name.value)
-    retention_in_days = 7
-    #kms_key_id        = "arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab"
-    skip_destroy      = false
-  }
+  #fargate_fluentbit_cw_log_group = {  #/eks-cluster1/fargate20231031163741692800000002
+  #  create          = true
+  #  use_name_prefix = true # Set this to true to enable name prefi
+  #  name_prefix       = format("eks-%s-fargate-",data.aws_ssm_parameter.cluster1_name.value)
+  #  name = format("/%s/fargate",data.aws_ssm_parameter.cluster1_name.value)
+  #  retention_in_days = 7
+  #  #kms_key_id        = "arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab"
+  #  skip_destroy      = false
+  #}
 
   #enable_aws_for_fluentbit                = true # get logs out to CW   - done in observability accelerator
   #aws_for_fluentbit = {
