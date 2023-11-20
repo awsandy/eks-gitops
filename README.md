@@ -97,6 +97,11 @@ https://github.com/aws-samples/configure-keycloak-on-eks-using-terraform
 
 
 
+Istio
+https://catalog.us-east-1.prod.workshops.aws/workshops/2b68b721-c18f-4c0c-bb75-efa3ab0f5a91/en-US
+
+
+
 -----
 
 make fixed
