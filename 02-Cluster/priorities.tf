@@ -14,3 +14,4 @@ resource "kubernetes_priority_class_v1" "high-priority" {
   global_default = false
   value = 1000000
 }
+

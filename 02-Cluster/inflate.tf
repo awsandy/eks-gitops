@@ -30,3 +30,4 @@ resource "kubectl_manifest" "karpenter_example_deployment" {
     helm_release.karpenter
   ]
 }
+

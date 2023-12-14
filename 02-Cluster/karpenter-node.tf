@@ -29,3 +29,4 @@ resource "kubectl_manifest" "karpenter_node_template" {
     helm_release.karpenter
   ]
 }
+

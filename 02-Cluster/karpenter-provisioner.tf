@@ -22,3 +22,5 @@ resource "kubectl_manifest" "karpenter_provisioner" {
   ]
 }
 
+
+

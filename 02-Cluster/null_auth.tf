@@ -19,3 +19,4 @@ resource "null_resource" "gen_cluster_auth" {
      EOT
   }
 }
+

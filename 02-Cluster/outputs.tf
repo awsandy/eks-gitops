@@ -275,3 +275,5 @@ output "instance_profile_unique" {
   value       = try(module.karpenter.aws_iam_instance_profile.this[0].unique_id, null)
 }
 
+
+

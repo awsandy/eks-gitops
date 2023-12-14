@@ -16,3 +16,5 @@ variable "CLUSTER2_NAME" {
   type    = string
   default = "default"
 }
+
+
