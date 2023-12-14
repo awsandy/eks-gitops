@@ -97,7 +97,7 @@ module "eks" {
   }
 
 
-  vpc_id                   = data.aws_ssm_parameter.cluster1_vpc_id.value
+  vpc_id                   = data.aws_ssm_parameter.cluster1_vpcid.value
   subnet_ids               = jsondecode(data.aws_ssm_parameter.cluster1_vpc_private_subnets.value)
   control_plane_subnet_ids = jsondecode(data.aws_ssm_parameter.cluster1_vpc_intra_subnets.value)
 
@@ -126,7 +126,7 @@ module "eks" {
       max_size        = 3
       desired_size    = 2
       #subnet_ids      = module.vpc.private_subnets
-      subnet_ids      =  jsondecode(aws_ssm_parameter.cluster1_vpc_private_subnets.value)
+      subnet_ids      =  jsondecode(data.aws_ssm_parameter.cluster1_vpc_private_subnets.value)
     }
 
 
