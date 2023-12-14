@@ -191,6 +191,28 @@ output "aws_auth_configmap_yaml" {
   value       = module.eks.aws_auth_configmap_yaml
 }
 
+output "cluster_vpcid" {
+  description = "clusters vpc id"
+  value       = module.vpc.vpc_id
+}
+
+output "cluster_vpc_cidr_block" {
+  description = "clusters vpc cidr block"
+  value       = module.vpc.vpc_cidr_block
+}
+
+output "cluster_private_subnets" {
+  description = "clusters private vpc ids"
+  value       = module.vpc.private_subnets
+}
+
+output "cluster_intra_subnets" {
+  description = "clusters intra vpc ids"
+  value       = module.vpc.intra_subnets
+}
+
+
+
 
 ################################################################################
 # IAM Role for Service Account (IRSA)
