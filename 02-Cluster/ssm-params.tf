@@ -9,7 +9,7 @@ resource "aws_ssm_parameter" "cluster1_vpcid" {
 }
 
 resource "aws_ssm_parameter" "cluster1_vpc_cidr_block" {
-  name        = "/workshop/cluster1_vpc_cidr_bloack"
+  name        = "/workshop/cluster1_vpc_cidr_block"
   description = "The vpc cidr block for cluster 1"
   type        = "String"
   value       = module.vpc.vpc_cidr_block
