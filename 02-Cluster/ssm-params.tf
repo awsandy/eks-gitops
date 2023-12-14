@@ -22,7 +22,10 @@ resource "aws_ssm_parameter" "cluster1_vpc_private_subnets" {
   name        = "/workshop/cluster1_private_subnets"
   description = "The private subnet ids for cluster 1"
   type        = "StringList"
-  value = join(",", module.vpc.private_subnets.*) 
+  value = jsonencode(module.vpc.private_subnets)
+  tags = {
+    workshop = "EKS Workshop"
+  }
 
   tags = {
     workshop = "EKS Workshop"
