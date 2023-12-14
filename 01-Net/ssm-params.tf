@@ -32,7 +32,7 @@ resource "aws_ssm_parameter" "cluster1_vpcid_intra_subnets" {
   name        = "/workshop/cluster1_intra_subnets"
   description = "The intra subnets for cluster 1"
   type        = "StringList"
-  value       = module.vpc.intra_subnets[0]
+  value = jsonencode(module.vpc.intra_subnets)
   tags = {
     workshop = "EKS Workshop"
   }
