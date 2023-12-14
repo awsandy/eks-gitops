@@ -26,10 +26,6 @@ resource "aws_ssm_parameter" "cluster1_vpc_private_subnets" {
   tags = {
     workshop = "EKS Workshop"
   }
-
-  tags = {
-    workshop = "EKS Workshop"
-  }
 }
 
 resource "aws_ssm_parameter" "cluster1_vpcid_intra_subnets" {
