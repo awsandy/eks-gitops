@@ -21,7 +21,7 @@ resource "aws_ssm_parameter" "cluster1_vpc_cidr_block" {
 resource "aws_ssm_parameter" "cluster1_vpc_private_subnets" {
   name        = "/workshop/cluster1_private_subnets"
   description = "The private subnet ids for cluster 1"
-  type        = "String"
+  type        = "StringList"
   value       = module.vpc.private_subnets
   tags = {
     workshop = "EKS Workshop"
@@ -31,7 +31,7 @@ resource "aws_ssm_parameter" "cluster1_vpc_private_subnets" {
 resource "aws_ssm_parameter" "cluster1_vpcid_intra_subnets" {
   name        = "/workshop/cluster1_intra_subnets"
   description = "The intra subnets for cluster 1"
-  type        = "String"
+  type        = "StringList"
   value       = module.vpc.intra_subnets
   tags = {
     workshop = "EKS Workshop"
