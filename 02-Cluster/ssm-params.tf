@@ -22,7 +22,7 @@ resource "aws_ssm_parameter" "cluster1_vpc_private_subnets" {
   name        = "/workshop/cluster1_private_subnets"
   description = "The private subnet ids for cluster 1"
   type        = "StringList"
-  value       = module.vpc.private_subnets
+  value       = module.vpc.private_subnets[0]
   tags = {
     workshop = "EKS Workshop"
   }
@@ -32,7 +32,7 @@ resource "aws_ssm_parameter" "cluster1_vpcid_intra_subnets" {
   name        = "/workshop/cluster1_intra_subnets"
   description = "The intra subnets for cluster 1"
   type        = "StringList"
-  value       = module.vpc.intra_subnets
+  value       = module.vpc.intra_subnets[0]
   tags = {
     workshop = "EKS Workshop"
   }
