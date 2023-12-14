@@ -125,7 +125,8 @@ module "eks" {
       min_size        = 1
       max_size        = 3
       desired_size    = 2
-      subnet_ids      = module.vpc.private_subnets
+      #subnet_ids      = module.vpc.private_subnets
+      subnet_ids      =  jsondecode(aws_ssm_parameter.cluster1_vpc_private_subnets.value)
     }
 
 
