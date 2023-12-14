@@ -28,7 +28,7 @@ resource "aws_ssm_parameter" "cluster1_vpc_private_subnets" {
   }
 }
 
-resource "aws_ssm_parameter" "cluster1_vpcid_intra_subnets" {
+resource "aws_ssm_parameter" "cluster1_vpc_intra_subnets" {
   name        = "/workshop/cluster1_intra_subnets"
   description = "The intra subnets for cluster 1"
   type        = "StringList"
