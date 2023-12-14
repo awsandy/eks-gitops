@@ -10,7 +10,7 @@ data "aws_ssm_parameter" "cluster1_vpc_private_subnets" {
   name        = "/workshop/cluster1_private_subnets"
 }
 
-data "aws_ssm_parameter" "cluster1_vpcid_intra_subnets" {
+data "aws_ssm_parameter" "cluster1_vpc_intra_subnets" {
   name        = "/workshop/cluster1_intra_subnets"
 }
 
