@@ -65,8 +65,10 @@ fixed:
 cluster:
 	@echo "$(GRE) INFO: Building Cluster resources"
 	cd 02-Cluster/ && \
-	terraform init && \
-	./build.sh
+	terraform init -reconfigure && \
+	terraform validate && \
+	terraform apply --auto-approve
+
 
 addons:
 	@echo "$(GRE) INFO: Add on resources"
