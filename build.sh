@@ -1,5 +1,6 @@
 tstart=$(date +%s)
-time make fixed
+make fixed
+time make net
 time make cluster
 time make addons
 time make grafana

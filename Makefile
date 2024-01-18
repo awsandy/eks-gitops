@@ -68,7 +68,12 @@ cluster:
 	terraform init -reconfigure && \
 	terraform validate && \
 	terraform apply --auto-approve
-
+net:
+	@echo "$(GRE) INFO: Network"
+	cd 01-Net/ && \
+	terraform init -reconfigure && \
+	terraform validate && \
+	terraform apply --auto-approve
 
 addons:
 	@echo "$(GRE) INFO: Add on resources"
